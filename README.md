@@ -1,2 +1,2 @@
 # ceejae-bot
-Basic Discord Bot
+Developing a new Discord bot using NodeJS.

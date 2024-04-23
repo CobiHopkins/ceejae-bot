@@ -14,12 +14,13 @@ module.exports = {
             option.setName('user')
                 .setDescription('The name of the user.')
                 .setRequired(true)
-       ),
+       )
+       .setDefaultMemberPermissions(0x0000000010000000),
     async execute(interaction) {
 
         const role = interaction.guild.roles.cache.find(role => role.name === interaction.options.getString('role'));
         const member = interaction.options.getUser('user');
-
+        
         if (role) {
             if (interaction.guild.members.cache.get(member.id).roles.cache.has(role.id)) {
                 await interaction.reply({ content: `${member} already has the ${role.name} role!`, ephemeral: false});
@@ -34,7 +35,7 @@ module.exports = {
             }
         }
         else {
-            await interaction.reply({ content: `${role} could not be found!`, ephemeral: false });
+            await interaction.reply({ content: `Role '${interaction.options.getString('role')}' could not be found!`, ephemeral: false });
         }
        
     }

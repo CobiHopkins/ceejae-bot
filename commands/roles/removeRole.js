@@ -14,7 +14,8 @@ module.exports = {
             option.setName('user')
                .setDescription('The user to remove the role from.')
                .setRequired(true)
-        ),
+        )
+        .setDefaultMemberPermissions(0x0000000010000000),
     async execute(interaction) {
         const role = interaction.guild.roles.cache.find(role => role.name === interaction.options.getString('role'));
         const user = interaction.options.getUser('user');

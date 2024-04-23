@@ -23,7 +23,8 @@ module.exports = {
             option.setName('mentionable')
                .setDescription('Whether or not the role is mentionable.')
                .setRequired(false)
-        ),
+        )
+        .setDefaultMemberPermissions(0x0000000010000000),
     async execute(interaction) {
         let role = interaction.guild.roles.cache.find(r => r.name === interaction.options.getString('name'));
         if (role) {

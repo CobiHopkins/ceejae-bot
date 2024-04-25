@@ -8,7 +8,8 @@ module.exports = {
              option.setName('role')
                  .setDescription('The role to get information about.')
                  .setRequired(true)
-         ),
+         )
+         .setDefaultMemberPermissions(0x0000000010000000),
     async execute(interaction) {
         const role = interaction.options.getRole('role');
         await interaction.reply(`Role ${role.name} has the colour ${role.hexColor}. The role ID is ${role.id} and role permissions are ${role.permissions.bitfield}.`);
